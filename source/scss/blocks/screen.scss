@@ -13,12 +13,40 @@
     transform: scale(0);
   }
 
+  &[id="prizes"] {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    transform: scaleY(0);
+    transform-origin: bottom;
+
+    transition: transform 0.5s linear;
+
+    .screen__wrapper {
+      transition: opacity 0.5s ease 0.7s;
+      opacity: 0;
+    }
+  }
+
   @media (max-width: $tablet) and (orientation: portrait) {
     min-height: calc(var(--vh, 1vh) * 100);
   }
 
   @media (max-width: $tablet - 1) and (orientation: landscape) {
     height: 100vh;
+  }
+
+  &.active {
+    &[id="prizes"] {
+      transform: scaleY(1);
+
+      .screen__wrapper {
+        opacity: 1;
+      }
+    }
   }
 }
 
